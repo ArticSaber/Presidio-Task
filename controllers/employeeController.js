@@ -3,10 +3,21 @@ import employeeSchema from "../schema/employeeSchema.js";
 // This function retrieves all employees from the database
 const getAllEmployees = async (req, res) => {
   try {
-    const employees = await employeeSchema.find();
+    const queryParameters = ["fullname", "age", "dob", "salary", "department"];
+    let filter = {};
+
+    queryParameters.forEach((param) => {
+      if (req.query[param]) filter[param] = req.query[param];
+    });
+
+    const employees = await employeeSchema.find(filter);
+    if (employees.length === 0)
+      return res.status(404).json({ message: "No employees found" });
+    if (!employees)
+      return res.status(404).json({ message: "No employees found" });
     res.status(200).json(employees);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
