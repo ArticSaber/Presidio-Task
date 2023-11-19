@@ -10,9 +10,12 @@ const User = new mongoose.Schema(
       type: Number,
       min: 18,
     },
-    dateOfBirth: {
-      type: Date,
-      default: Date.now,
+    dob: {
+      type: String,
+      set: (value) => {
+        const [day, month, year] = value.split("-");
+        return `20${year}-${month}-${day}`;
+      },
     },
     salary: {
       type: Number,
@@ -25,11 +28,6 @@ const User = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-User.pre("save", async function (next) {
-  this.password = await bcrypt.hash(this.password, 10);
-  next();
-});
 
 const employeeSchema = mongoose.model("EmployeeDetails", User);
 

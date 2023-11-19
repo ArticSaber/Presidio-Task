@@ -4,11 +4,193 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing Artic</title>
+    <title>Employee Backend Server API</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
 
   <body>
-    <h1>Welcome to the Employee Backend Server API</h1>
+    <div class="container">
+      <h1>Welcome to the Employee Backend Server API</h1>
+
+      <h2>Endpoints</h2>
+
+      <h3>GET api/v1/employees</h3>
+      <p>Returns a list of all employees.</p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      [
+        {
+          "id": 1,
+          "fullname": "John Doe",
+          "age": 30,
+          "dob": "01-01-90",
+          "salary": "20000",
+          "department": "Finance"
+        },
+        {
+          "id": 2,
+          "fullname": "Jane Doe",
+          "age": 25,
+          "dob": "01-01-95",
+          "salary": "25000",
+          "department": "HR"
+        }
+      ]
+      </pre
+        >
+      </div>
+
+      <h3>GET api/v1/employees/:id</h3>
+      <p>Returns the employee with the given ID.</p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      {
+        "fullname": "John Doe",
+        "age": 30,
+        "dob": "01-01-90",
+        "salary": "20000",
+        "department": "Finance"
+      }
+      </pre
+        >
+      </div>
+
+      <h3>POST api/v1/employees</h3>
+      <p>
+        Creates a new employee. The body of the request should be a JSON object
+        with the following properties:
+      </p>
+      <ul>
+        <li><code>fullname</code>: The full name of the employee.</li>
+        <li><code>age</code>: The age of the employee.</li>
+        <li>
+          <code>dob</code>: The date of birth of the employee, in the format
+          DD-MM-YY.
+        </li>
+        <li>
+          <code>salary</code>: The salary of the employee and the salary should
+          be higher than ₹10000.
+        </li>
+        <li>
+          <code>department</code>: The department of the employee and the
+          departments are ["HR", "Sales", "Finance", "Engineer", "Others"].
+        </li>
+      </ul>
+      <p>Here is an example of a valid JSON object:</p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+        {
+          "fullname": "John Doe",
+          "age": 30,
+          "dob": "01-01-90",
+          "salary": "20000",
+          "department": "Finance"
+        }
+        </pre>
+      </div>
+
+      <h3>PUT api/v1/employees/:id</h3>
+      <p>
+        Updates the employee with the given ID. The body of the request should
+        be a JSON object with the properties to be updated.
+      </p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      {
+        "message": "Employee updated successfully"
+      }
+      </pre
+        >
+      </div>
+
+      <h3>DELETE api/v1/employees/:id</h3>
+      <p>Deletes the employee with the given ID.</p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      {
+        "message": "Employee deleted successfully"
+      }
+      </pre
+        >
+      </div>
+
+      <h3>GET api/v1/employees/average-salary</h3>
+      <p>Returns the average salary of all employees in the company.</p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      {
+        "averageSalary": "25000"
+      }
+      </pre
+        >
+      </div>
+
+      <h3>GET api/v1/employees/average-salary/:department</h3>
+      <p>The API supports the following departments:</p>
+      <ul>
+        <li>HR</li>
+        <li>Sales</li>
+        <li>Finance</li>
+        <li>Engineer</li>
+        <li>Others</li>
+      </ul>
+      <p>
+        Returns the average salary of employees in the specified department.
+      </p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+      {
+        "averageSalary": "30000"
+      }
+      </pre
+        >
+      </div>
+      <h3>Testing the API</h3>
+      <p>
+        We recommend using
+        <a
+          style="color: aqua; text-decoration: none"
+          href="https://www.postman.com/"
+          >Postman</a
+        >
+        to test the API. You can use it to send requests to the API and view the
+        responses.
+      </p>
+    </div>
+    <script>
+      const copyButtons = document.querySelectorAll(".copyButton");
+
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const jsonExample = button.parentElement.querySelector("pre");
+          navigator.clipboard.writeText(jsonExample.innerText);
+        });
+      });
+    </script>
   </body>
 </html>

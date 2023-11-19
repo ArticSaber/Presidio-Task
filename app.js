@@ -5,6 +5,7 @@ import cors from "cors";
 import path from "path";
 import cookieParser from "cookie-parser";
 import root from "./router/root.js";
+import EmployeeRouter from "./router/employeeRouter.js";
 
 const app = Express();
 const PORT = 3000;
@@ -20,6 +21,7 @@ app.use(Express.json());
 app.use(cookieParser());
 app.use("/", Express.static(path.join(__dirname, "public")));
 app.use("/", root);
+app.use("/api/v1/employees", EmployeeRouter);
 
 app.all("*", (req, res) => {
   res.status(404);
