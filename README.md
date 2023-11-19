@@ -9,7 +9,7 @@ Endpoints
 
 Returns a list of all employees.
 
-      \[
+      [
         {
           "id": 1,
           "fullname": "John Doe",
@@ -26,7 +26,7 @@ Returns a list of all employees.
           "salary": "25000",
           "department": "HR"
         }
-      \]
+      ]
       
 
 ### GET api/v1/employees/:id
