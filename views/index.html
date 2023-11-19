@@ -46,6 +46,20 @@
       </pre
         >
       </div>
+      <p>
+        You can filter the results by using query parameters. For example, to
+        get all employees named John Doe in the Finance department, use the
+        following URL as the request URL for reference:
+      </p>
+      <div style="position: relative">
+        <button class="copyButton">
+          <i class="fas fa-copy"></i>
+        </button>
+        <pre id="jsonExample">
+        http://localhost:3000/api/v1/employees?fullname=John%20Doe&department=Finance
+      </pre
+        >
+      </div>
 
       <h3>GET api/v1/employees/:id</h3>
       <p>Returns the employee with the given ID.</p>
