@@ -27,6 +27,10 @@ Returns a list of all employees.
           "department": "HR"
         }
       ]
+
+You can filter the results by using query parameters. For example, to get all employees named John Doe in the Finance department, use the following URL as the request URL for reference:
+
+      http://localhost:3000/api/v1/employees?fullname=John%20Doe&department=Finance
       
 
 ### GET api/v1/employees/:id
